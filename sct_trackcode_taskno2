@@ -1,0 +1,52 @@
+#number and ch alenges the user to guess it the program should prompt the user to input their guess compare 
+#it to the generated number write python code
+#skill craft
+#task number 2
+import random
+
+def number_guessing_game():
+    print("Welcome to the Number Guessing Game!")
+    print("-------------------------------------")
+
+    # Generate a random number between 1 and 100
+    number_to_guess = random.randint(1, 100)
+
+    # Initialize the number of attempts
+    attempts = 0
+
+    while True:
+        # Prompt the user to input their guess
+        user_guess = input("Guess a number between 1 and 100 (or 'quit' to exit): ")
+
+        # Check if the user wants to quit
+        if user_guess.lower() == "quit":
+            print("Goodbye!")
+            break
+
+        # Try to convert the user's guess to an integer
+        try:
+            user_guess = int(user_guess)
+        except ValueError:
+            print("Invalid input. Please enter a whole number.")
+            continue
+
+        # Check if the user's guess is in the valid range
+        if user_guess < 1 or user_guess > 100:
+            print("Invalid input. Please enter a number between 1 and 100.")
+            continue
+
+        # Increment the number of attempts
+        attempts += 1
+
+        # Compare the user's guess to the generated number
+        if user_guess < number_to_guess:
+            print("Too low! Try again.")
+        elif user_guess > number_to_guess:
+            print("Too high! Try again.")
+        else:
+            print(f"Congratulations! You guessed the number in {attempts} attempts.")
+            break
+
+number_guessing_game()
+
+
